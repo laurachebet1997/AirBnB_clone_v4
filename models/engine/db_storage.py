@@ -52,21 +52,21 @@ class DBStorage:
         return (new_dict)
 
      def get(self, cls, id):
-        """
-        On the curret database session get an object of the given class.
-        Args:
-            cls (str): Name of object type. If None, no queries.
-            id (str): ID of object to query. If None, no queries.
-        Return:
-             The object based on the class name and its ID.
-        """
-        CLASS = classes[cls.__name__]
-        if CLASS is None:
-            return None
-        for value in self.all(CLASS).values():
-            if value.id == id:
-                return value
-        return None
+         """
+         On the curret database session get an object of the given class.
+         Args:
+             cls (str): Name of object type. If None, no queries.
+             id (str): ID of object to query. If None, no queries.
+         Return:
+              The object based on the class name and its ID.
+         """
+         CLASS = classes[cls.__name__]
+         if CLASS is None:
+             return None
+         for value in self.all(CLASS).values():
+             if value.id == id:
+                 return value
+         return None
 
     def new(self, obj):
         """add the object to the current database session"""

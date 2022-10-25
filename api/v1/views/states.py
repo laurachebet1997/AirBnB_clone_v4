@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 """
-Script for the REST API of State class model 
+Script for the REST API of State class model
 """
 
 from api.v1.views import app_views, State
 from flask import jsonify, abort, request
 from models import storage
-
 
 
 @app_views.route('/states', strict_slashes=False, methods=['GET'])
@@ -22,17 +21,17 @@ def all_states():
         examples:
           [
             {
-              "__class__": "State", 
-              "created_at": "2017-04-14T00:00:02", 
-              "id": "8f165686-c98d-46d9-87d9-d6059ade2d99", 
-              "name": "Louisiana", 
+              "__class__": "State",
+              "created_at": "2017-04-14T00:00:02",
+              "id": "8f165686-c98d-46d9-87d9-d6059ade2d99",
+              "name": "Louisiana",
               "updated_at": "2017-04-14T00:00:02"
-            }, 
+            },
             {
-              "__class__": "State", 
-              "created_at": "2017-04-14T16:21:42", 
-              "id": "1a9c29c7-e39c-4840-b5f9-74310b34f269", 
-              "name": "Arizona", 
+              "__class__": "State",
+              "created_at": "2017-04-14T16:21:42",
+              "id": "1a9c29c7-e39c-4840-b5f9-74310b34f269",
+              "name": "Arizona",
               "updated_at": "2017-04-14T16:21:42"
             }
           ]
@@ -40,6 +39,7 @@ def all_states():
     states = storage.all(State)
     states = [state.to_dict() for state in states.values()]
     return jsonify(states), 200
+
 
 @app_views.route('/states/<id>', strict_slashes=False, methods=['GET'])
 def get_state(id):
@@ -59,10 +59,10 @@ def get_state(id):
         description: A State object
         examples:
           {
-            "__class__": "State", 
-            "created_at": "2017-04-14T00:00:02", 
-            "id": "8f165686-c98d-46d9-87d9-d6059ade2d99", 
-            "name": "Louisiana", 
+            "__class__": "State",
+            "created_at": "2017-04-14T00:00:02",
+            "id": "8f165686-c98d-46d9-87d9-d6059ade2d99",
+            "name": "Louisiana",
             "updated_at": "2017-04-14T00:00:02"
           }
       404:
@@ -128,10 +128,10 @@ def create_state():
         description: A State object was created
         examples:
           {
-            "__class__": "State", 
-            "created_at": "2017-04-15T01:30:27.557877", 
-            "id": "feadaa73-9e4b-4514-905b-8253f36b46f6", 
-            "name": "California", 
+            "__class__": "State",
+            "created_at": "2017-04-15T01:30:27.557877",
+            "id": "feadaa73-9e4b-4514-905b-8253f36b46f6",
+            "name": "California",
             "updated_at": "2017-04-15T01:30:27.558081"
           }
       400:
@@ -155,7 +155,6 @@ def create_state():
         return jsonify(new_state.to_dict()), 201
     else:
         return jsonify({'error': 'Missing name'}), 400
-
 
 
 @app_views.route('/states/<id>', strict_slashes=False, methods=['PUT'])

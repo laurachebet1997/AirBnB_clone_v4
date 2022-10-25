@@ -99,4 +99,4 @@ class FileStorage:
         CLASS = classes[cls.__name__]
         if CLASS is None:
             return len(self.all())
-    return len(self.all(CLASS))
+        return len(self.all(CLASS))
